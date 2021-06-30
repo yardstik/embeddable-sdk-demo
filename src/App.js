@@ -6,7 +6,8 @@ function App() {
     method: "POST", 
     body: {
       "user_email": "erin.black@yardstik.com"
-    }
+    },
+    mode: 'no-cors',
   })
   .then(res => console.log('in then with res', res))
   .catch((err) => console.log('in catch with err', err));

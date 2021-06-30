@@ -30,13 +30,11 @@ app.post("/yardstik-jwt", (req, res, next) => {
       'Access-Control-Allow-Origin': '*'
     },
   }
-
-
-  console.log('req.body', req.body);
   const json = JSON.stringify({ user_email: 'erin.black@yardstik.com' });
  axios.post('https://admin.yardstik-staging.com/web_tokens',json, options)
   .then(response => {
     console.log('in server then with ',response.data);
+    res.status(200).send('test res')
   })
   .catch(error => {
     console.log('in catch in express with error', error.response);
