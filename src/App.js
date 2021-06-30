@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  fetch("http://localhost:3001/yardstik-jwt")
+  .then(res => console.log('in then with res', res))
+  .catch((err) => console.log('in catch with err', err));
   return (
     <div className="App">
       <header className="App-header">
