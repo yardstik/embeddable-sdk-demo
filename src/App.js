@@ -2,7 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  fetch("http://localhost:3001/yardstik-jwt")
+  fetch("http://localhost:3001/yardstik-jwt", {
+    method: "POST", 
+    body: {
+      "user_email": "erin.black@yardstik.com"
+    }
+  })
   .then(res => console.log('in then with res', res))
   .catch((err) => console.log('in catch with err', err));
   return (

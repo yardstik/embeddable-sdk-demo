@@ -1,9 +1,10 @@
 // server/index.js
 const express = require("express");
+var app = express()
+
 
 const PORT = process.env.PORT || 3001;
 
-const app = express();
 const axios = require('axios').default;
 
 app.get("/api", (req, res) => {
@@ -11,24 +12,38 @@ app.get("/api", (req, res) => {
 });
 
 
-app.get("/yardstik-jwt", (req, res) => {
+app.post("/yardstik-jwt", (req, res, next) => {
   console.log('in express route');
-  const api = axios.create({
-    baseURL: 'https://admin.yardstik-staging.com',
+  // const api = axios.create({
+  //   baseURL: 'https://admin.yardstik-staging.com',
+  //   headers: {
+  //     Accept: 'application/json',
+  //     Authorization: 'Bearer cf4facdf3b3a0c199f48bcae1c09bba54df41ebc'
+  //   },
+  // });
+
+  const options = {
     headers: {
       Accept: 'application/json',
-      Authorization: 'Bearer cf4facdf3b3a0c199f48bcae1c09bba54df41ebc'
+      Authorization: 'Account cf4facdf3b3a0c199f48bcae1c09bba54df41ebc',
+      "Content-Type": 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
-  });
+  }
 
-  api.get('/web_tokens')
+
+  console.log('req.body', req.body);
+  const json = JSON.stringify({ user_email: 'erin.black@yardstik.com' });
+ axios.post('https://admin.yardstik-staging.com/web_tokens',json, options)
   .then(response => {
-    console.log(response.data.url);
-    console.log(response.data.explanation);
+    console.log('in server then with ',response.data);
   })
   .catch(error => {
-    console.log('in catch in express with error', error);
+    console.log('in catch in express with error', error.response);
+    next(error);
+    throw new Error(error);
   });
+ 
 });
 
 app.listen(PORT, () => {
