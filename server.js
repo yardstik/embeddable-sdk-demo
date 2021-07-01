@@ -2,23 +2,17 @@
 const express = require("express");
 var app = express()
 
-
 const PORT = process.env.PORT || 3001;
 
 const axios = require('axios').default;
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
-
-
 app.post("/yardstik-jwt", (req, res, next) => {
-  console.log('in express route');
-
+  // Set Header to include apiKey associates with user's account
+  // You can get your apiKey in the developer tab of the Yardstik app
   const options = {
     headers: {
       Accept: 'application/json',
-      Authorization: 'Account cf4facdf3b3a0c199f48bcae1c09bba54df41ebc',
+      Authorization: 'Account 2fb2f2691bf7f400b940cb49392873589a4bc233',
       "Content-Type": 'application/json',
       /* 'Access-Control-Allow-Origin': '*' <-- This is not needed here.
          This is the backend request header.
@@ -27,23 +21,29 @@ app.post("/yardstik-jwt", (req, res, next) => {
        */
     },
   }
-  const json = JSON.stringify({ user_email: 'erin.black@yardstik.com' });
- axios.post('https://admin.yardstik-staging.com/web_tokens',json, options)
-  .then(response => {
+
+  // The request body should include the email of the user
+  const json = JSON.stringify({ user_email: 'laura.campbell@yardstik.com' });
+
+  // Make a request to the Yardstik backend to get the JWT for the user
+  axios.post('https://admin.yardstik-staging.com/web_tokens', json, options)
+    .then(response => {
       // Add headers to server RESPONSE (not servers request to the yardstik api)
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
       res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-      console.log('in server then with ',response.data);
+      console.log('in server then with ', response.data);
+
+      // send JWT to front end to be used in the iframe source URL
       res.status(200).json(response.data);
-  })
-  .catch(error => {
-    console.log('in catch in express with error', error.response);
-    next(error);
-    throw new Error(error);
-  });
- 
+    })
+    .catch(error => {
+      console.log('in catch in express with error', error.response);
+      next(error);
+      throw new Error(error);
+    });
+
 });
 
 app.listen(PORT, () => {
