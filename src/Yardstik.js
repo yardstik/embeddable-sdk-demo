@@ -38,9 +38,13 @@ class CandidateReportIframe extends EventEmitter {
       case 'yardstik:loaded':
         this.onLoaded()
         break;
+      case 'yardstik:tokenExpiration':
+        this.onExpiration()
+        break;
       default:
         break;
     }
+
   }
   // method to allow for clean-up of iframe
   destroy() {
@@ -51,7 +55,13 @@ class CandidateReportIframe extends EventEmitter {
   /* private */
   // method to emit loaded event that can be used by parent
   onLoaded = () => {
+    console.log("Hey, I got the message that your page is loaded!")
     this.emit('loaded', true)
+  }
+  // method to emit token expiration event that can be used by parent
+  onExpiration = () => {
+    console.log('Hey, I got the message that your token expired!')
+    this.emit('expiration', true)
   }
 }
 

@@ -5,6 +5,7 @@ import { Yardstik } from './Yardstik';
 function App() {
   const [jwt, setJwt] = useState('');
   const [iframeReady, setIframeReady] = useState(false);
+  const [tokenExpired, setTokenExpired] = useState(false);
   const [yardstikReport, setYardstikReport] = React.useState(null);
 
   const reportId = '589366ec-f7d6-42fb-8756-31a635d8f511';
@@ -22,6 +23,10 @@ function App() {
         setIframeReady(true);
       })
       setYardstikReport(yardstikReport)
+      yardstikReport.on('expiration', () => {
+        console.log("Hi, parent knows token has died!")
+        setTokenExpired(true);
+      })
       return () => {
         yardstikReport.destroy()
       }
@@ -51,11 +56,12 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className='title'>Hello World</h1>
+      {!iframeReady && <>loading!</>}
+      {tokenExpired && <>your session has expired, please refresh the page!</>}
       <div ref={containerRef} style={{
         display: iframeReady ? 'block' : 'none',
       }} />
-      {!iframeReady && <>loading!</>}
-      <h1 className='title'>Hello World</h1>
     </div>
   );
 }
