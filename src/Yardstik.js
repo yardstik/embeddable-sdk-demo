@@ -3,9 +3,11 @@ const EventEmitter = require('events');
 const DOMAIN = 'http://localhost:8080'
 
 class CandidateReportIframe extends EventEmitter {
+
   // private iframe;
   // build the iframe and attach to an element in the DOM
   constructor({ token, reportId, container, width = 800, height = 600 }) {
+    console.log('in candidate report iframe constructure')
     if (!token || !reportId || !container) {
       throw new Error('token, reportId and container are required')
     }

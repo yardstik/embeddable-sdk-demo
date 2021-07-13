@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "embedable-sdk": {
+      "signature": "b4755be340fdaa7234c8b69082215f5f",
+      "file": true,
+      "replaced": "1.0.0-ch8073.4"
+    }
+  }
+}

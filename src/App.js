@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Yardstik } from './Yardstik';
+import { YardstikCandidateReportIframe} from 'embedable-sdk';
 
 function App() {
   const [jwt, setJwt] = useState('');
@@ -14,7 +14,7 @@ function App() {
 
   React.useEffect(() => {
     if (containerRef && jwt && reportId) {
-      const yardstikReport = new Yardstik.CandidateReportIframe({
+      const yardstikReport = new YardstikCandidateReportIframe.CandidateReportIframe({
         token: jwt,
         reportId,
         container: containerRef.current,
@@ -53,6 +53,8 @@ function App() {
         console.log('in catch with err', err)
       });
   }, []);
+
+  console.log('test', test);
 
   return (
     <div className="App">
