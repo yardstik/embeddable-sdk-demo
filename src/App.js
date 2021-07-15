@@ -1,14 +1,16 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Yardstik } from './Yardstik';
+import { Yardstik } from '@yardstik/embedable-sdk';
 
 function App() {
   const [jwt, setJwt] = useState('');
   const [iframeReady, setIframeReady] = useState(false);
   const [tokenExpired, setTokenExpired] = useState(false);
   const [yardstikReport, setYardstikReport] = React.useState(null);
+  const [yardstikAccountDisclosures, setYardstikAccountDisclosures] = React.useState(null);
 
   const reportId = '589366ec-f7d6-42fb-8756-31a635d8f511';
+  const accountId = '02f84bb4-47dc-44a8-8049-88df0840e9a9';
 
   const containerRef = React.useRef();
 
@@ -18,13 +20,14 @@ function App() {
         token: jwt,
         reportId,
         container: containerRef.current,
+        domain: 'http://localhost:8080'
       });
       yardstikReport.on('loaded', () => {
         setIframeReady(true);
       })
       setYardstikReport(yardstikReport)
       yardstikReport.on('expiration', () => {
-        console.log("Hi, parent knows token has died!")
+        console.log("The JWT token has expired.")
         setTokenExpired(true);
       })
       return () => {
@@ -43,9 +46,7 @@ function App() {
     })
       .then(res => {
         res.json().then(json => {
-          console.log('in then with res', json);
           setJwt(json.token);
-          console.log('jwt', json.token);
         });
 
       })
@@ -56,11 +57,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className='title'>Hello World</h1>
+      <h1 className='title'>Acme Corporation</h1>
       {!iframeReady && <>loading!</>}
-      {tokenExpired && <>your session has expired, please refresh the page!</>}
+      {tokenExpired && <div style={{
+        color: 'navy',
+        padding: '20px',
+      }}>Your session has expired, please refresh the page!</div>}
       <div ref={containerRef} style={{
         display: iframeReady ? 'block' : 'none',
+        padding: '20px'
       }} />
     </div>
   );
