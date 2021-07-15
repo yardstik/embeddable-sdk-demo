@@ -11,30 +11,54 @@ function App() {
 
   const reportId = '589366ec-f7d6-42fb-8756-31a635d8f511';
   const accountId = '02f84bb4-47dc-44a8-8049-88df0840e9a9';
-
+  const domain = 'http://localhost:8080';
   const containerRef = React.useRef();
 
+  // Use this code to see a report in the iframe
+  // React.useEffect(() => {
+  //   if (containerRef && jwt && reportId) {
+  //     const yardstikReport = new Yardstik.CandidateReportIframe({
+  //       token: jwt,
+  //       reportId,
+  //       container: containerRef.current,
+  //       domain: domain,
+  //     });
+  //     yardstikReport.on('loaded', () => {
+  //       setIframeReady(true);
+  //     })
+  //     setYardstikReport(yardstikReport)
+  //     yardstikReport.on('expiration', () => {
+  //       console.log("The JWT token has expired.")
+  //       setTokenExpired(true);
+  //     })
+  //     return () => {
+  //       yardstikReport.destroy()
+  //     }
+  //   }
+  // }, [containerRef, jwt, reportId])
+
+  // Use this code to see a report in the iframe
   React.useEffect(() => {
-    if (containerRef && jwt && reportId) {
-      const yardstikReport = new Yardstik.CandidateReportIframe({
+    if (containerRef && jwt && accountId) {
+      const yardstikAccountDisclosures = new Yardstik.AccountDisclosuresIframe({
         token: jwt,
-        reportId,
+        accountId,
         container: containerRef.current,
-        domain: 'http://localhost:8080'
+        domain: domain
       });
-      yardstikReport.on('loaded', () => {
+      yardstikAccountDisclosures.on('loaded', () => {
         setIframeReady(true);
       })
-      setYardstikReport(yardstikReport)
-      yardstikReport.on('expiration', () => {
+      setYardstikAccountDisclosures(yardstikAccountDisclosures)
+      yardstikAccountDisclosures.on('expiration', () => {
         console.log("The JWT token has expired.")
         setTokenExpired(true);
       })
       return () => {
-        yardstikReport.destroy()
+        yardstikAccountDisclosures.destroy()
       }
     }
-  }, [containerRef, jwt, reportId])
+  }, [containerRef, jwt, accountId])
 
   // on component did mount, get the jwt from the backend
   useEffect(() => {

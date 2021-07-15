@@ -3,7 +3,7 @@ const express = require("express");
 var app = express()
 
 const PORT = process.env.PORT || 3001;
-const token = process.env.API_TOKEN;
+const token = process.env.API_KEY;
 const email = process.env.EMAIL;
 
 const axios = require('axios').default;
