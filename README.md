@@ -1,3 +1,8 @@
+# Running a Demo with iframe-test
+
+First, update 'server.js' to include your API Key and email address where indicated.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

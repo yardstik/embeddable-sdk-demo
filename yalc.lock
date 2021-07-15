@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "packages": {
+    "embedable-sdk": {
+      "signature": "744cdb204960470a734e431243e2d4c7",
+      "file": true,
+      "replaced": "1.1.0-ch8073.3"
+    },
+    "@yardstik/embedable-sdk": {
+      "signature": "7248214617678c0600ce3a03bb487b68",
+      "file": true
+    }
+  }
+}

@@ -3,6 +3,8 @@ const express = require("express");
 var app = express()
 
 const PORT = process.env.PORT || 3001;
+const token = process.env.API_TOKEN;
+const email = process.env.EMAIL;
 
 const axios = require('axios').default;
 
@@ -12,7 +14,7 @@ app.post("/yardstik-jwt", (req, res, next) => {
   const options = {
     headers: {
       Accept: 'application/json',
-      Authorization: 'Account 2fb2f2691bf7f400b940cb49392873589a4bc233',
+      Authorization: `Account ${token}`,
       "Content-Type": 'application/json',
       /* 'Access-Control-Allow-Origin': '*' <-- This is not needed here.
          This is the backend request header.
@@ -23,7 +25,7 @@ app.post("/yardstik-jwt", (req, res, next) => {
   }
 
   // The request body should include the email of the user
-  const json = JSON.stringify({ user_email: 'laura.campbell@yardstik.com' });
+  const json = JSON.stringify({ user_email: email });
 
   // Make a request to the Yardstik backend to get the JWT for the user
   axios.post('https://admin.yardstik-staging.com/web_tokens', json, options)
