@@ -13,8 +13,8 @@ function App() {
       <TestAppBar />
       <Switch>
         <Route path={'/'} exact={true} component={ReportView} />
-        <Route path={'/Report'} exact={true} component={ReportView} />
-        <Route path={'/AccountView'} exact={true} component={AccountView} />
+        <Route path={'/report'} exact={true} component={ReportView} />
+        <Route path={'/account-view'} exact={true} component={AccountView} />
       </Switch>
     </div >
   );

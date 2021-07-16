@@ -36,7 +36,7 @@ export default function ProminentAppBar() {
               Candidate Report
             </Typography>
           </Link>
-          <Link component={RouterLink} to="/AccountView">
+          <Link component={RouterLink} to="/account-view">
             <Typography className={classes.link}>
               Account Disclosures
             </Typography>
