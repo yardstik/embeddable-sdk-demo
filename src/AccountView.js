@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Yardstik } from '@yardstik/embedable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { selectedAccountId, selectedDomain } from './constants';
 
 function AccountView() {
   const [jwt, setJwt] = useState('');
@@ -9,8 +10,8 @@ function AccountView() {
   const [tokenExpired, setTokenExpired] = useState(false);
   const [yardstikAccountDisclosures, setYardstikAccountDisclosures] = React.useState(null);
 
-  const accountId = '02f84bb4-47dc-44a8-8049-88df0840e9a9';
-  const domain = 'http://localhost:8080';
+  const accountId = selectedAccountId;
+  const domain = selectedDomain;
   const containerRef = React.useRef();
 
   // Use this code to see a report in the iframe

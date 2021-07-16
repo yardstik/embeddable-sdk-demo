@@ -1,17 +1,17 @@
 # Running a Demo with iframe-test
 
-First, update your .env file to include your API Key and email address. 
+1. Update your .env file to include your API Key and email address. 
 
     API_KEY=********************
     EMAIL=************************
 
-Second, update the app.js file to include the reportId and accountId that you want to see.
-Third, run yarn server to start up the back end.
-Fourth, run yarn start to start up the front end.
+2. Update the constants.js file to include the reportId and accountId that you want to see, and the domain that you will be using for the iframe src (e.g, "http://localhost:8080", https://app.yardstik-staging.com/, etc.).
+3. Run yarn server to start up the back end.
+4. Run yarn start to start up the front end.
 
 IMPORTANT NOTES:   
 You must be authorized to view the report for the provided reportId.
-If you want legal documents to appear for signature, make sure your settings in active admin for the account show that documents are required, but have not been provided.
+If you want legal documents to appear for signature, make sure your settings in active admin for the account show that legal documents are required, but have not been provided.
 
 # Getting Started with Create React App
 

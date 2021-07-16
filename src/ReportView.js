@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Yardstik } from '@yardstik/embedable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { selectedReportId, selectedDomain } from './constants';
 
 function ReportView() {
   const [jwt, setJwt] = useState('');
@@ -9,8 +10,8 @@ function ReportView() {
   const [tokenExpired, setTokenExpired] = useState(false);
   const [yardstikReport, setYardstikReport] = React.useState(null);
 
-  const reportId = '589366ec-f7d6-42fb-8756-31a635d8f511';
-  const domain = 'http://localhost:8080';
+  const reportId = selectedReportId;
+  const domain = selectedDomain;
   const containerRef = React.useRef();
 
   React.useEffect(() => {
