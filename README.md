@@ -1,21 +1,29 @@
-# Running a Demo with iframe-test
+![Yardstik](https://yardstik-assets.s3.amazonaws.com/logos/yardstik-wordmark-white-outlined.png)
 
-1. Update your .env file to include your API Key and email address. 
+# Getting Started
+
+1. Log into your account in Yardstik
+2. Navigate to the Developer page and select API Keys
+3. Enter the `Name` for the API key and click the `Create` button
+
+![Yardstik](https://yardstik-assets.s3.amazonaws.com/images/yardstik_api_keys_screen.png)
+
+1. Update the environment variables in docker-compose.yml to include your API Key and email address. 
 
     API_KEY=********************
     EMAIL=************************
+    
+    `NOTE`: if you do not wish to run this demo inside docker you must make sure these environment variables are set on your machine.
 
 2. Update the constants.js file to include the reportId and accountId that you want to see, and the domain that you will be using for the iframe src (e.g, "http://localhost:8080", https://app.yardstik-staging.com/, etc.).
 3. Run yarn server to start up the back end.
 4. Run yarn start to start up the front end.
 
-IMPORTANT NOTES:   
+`IMPORTANT NOTES`:   
 You must be authorized to view the report for the provided reportId.
-If you want legal documents to appear for signature, make sure your settings in active admin for the account show that legal documents are required, but have not been provided.
+Legal documents will only appear if they are required on your account but have not yet been provided.
 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
