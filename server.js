@@ -1,47 +1,58 @@
 // server/index.js
 const express = require("express");
+var cors = require('cors')
+
 var app = express()
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
-const token = process.env.API_KEY;
-const email = process.env.EMAIL;
-
 const axios = require('axios').default;
 
-app.post("/yardstik-jwt", (req, res, next) => {
-  // Set Header to include apiKey associates with user's account
-  // You can get your apiKey in the developer tab of the Yardstik app
+/***
+ * Define a route for the frontend to call to receive a token.
+ * The route must accept a JSON body which includes the email address of the user viewing the embedded content
+ * The email address must belong to a user registered in Yardstik and associated with the account that API_KEY belongs to
+ *
+ * sample body: { "user_email": "user@example.com" }
+  */
+app.post("/token", express.json({type: '*/*'}), (req, res, next) => {
+  // Set Header to include yardstik apiKey
+  // Get the api_key in the developer tab of the Yardstik app
   const options = {
     headers: {
-      Accept: 'application/json',
-      Authorization: `Account ${token}`,
-      "Content-Type": 'application/json',
-      /* 'Access-Control-Allow-Origin': '*' <-- This is not needed here.
-         This is the backend request header.
-         You need to add the cors stuff to the server response header below.
-         It tells the browser it's allowed to render the content
-       */
+      "Accept": "application/json",
+      "Authorization": `Account ${process.env.YARDSTIK_API_KEY}`,
+      "Content-Type": "application/json",
     },
   }
 
-  // The request body should include the email of the user
-  const json = JSON.stringify({ user_email: email });
+  if(!process.env.YARDSTIK_API_URL){
+      throw new Error('the YARDSTIK_API_URL environment variable cannot be null ');
+  }
 
+  if(!process.env.YARDSTIK_API_KEY){
+      throw new Error('the YARDSTIK_API_KEY environment variable cannot be null ');
+  }
+
+ if(!req.body.user_email){
+     throw new Error('Request body should include the user_email key with a valid email');
+  }
+
+ console.log(req.body);
   // Make a request to the Yardstik backend to get the JWT for the user
-  axios.post('https://admin.yardstik-staging.com/web_tokens', json, options)
+  axios.post(`${process.env.YARDSTIK_API_URL}/web_tokens`, JSON.stringify(req.body), options)
     .then(response => {
-      // Add headers to server RESPONSE (not servers request to the yardstik api)
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-      res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-      console.log('in server then with ', response.data);
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+      res.header('Access-Control-Allow-Headers', 'Content-Type');
+      res.header('Access-Control-Allow-Headers', 'content-type');
+      res.header('Access-Control-Allow-Headers', 'Accept');
 
       // send JWT to front end to be used in the iframe source URL
       res.status(200).json(response.data);
     })
     .catch(error => {
-      console.log('in catch in express with error', error.response);
       next(error);
       throw new Error(error);
     });

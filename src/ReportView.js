@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Yardstik } from '@yardstik/embedable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { selectedReportId, selectedDomain } from './constants';
+import { BACKEND_URL, YARDSTIK_ACCOUNT_ID, YARDSTIK_REPORT_ID, YARDSTIK_APP_URL } from './constants';
 
 function ReportView() {
   const [jwt, setJwt] = useState('');
@@ -10,39 +10,46 @@ function ReportView() {
   const [tokenExpired, setTokenExpired] = useState(false);
   const [yardstikReport, setYardstikReport] = React.useState(null);
 
-  const reportId = selectedReportId;
-  const domain = selectedDomain;
   const containerRef = React.useRef();
 
+  const backend_url = process.env.IS_DOCKER === 'true' ? process.env.BACKEND_URL : BACKEND_URL;
+
   React.useEffect(() => {
-    if (containerRef && jwt && reportId) {
+    if (containerRef && jwt && YARDSTIK_REPORT_ID) {
       const yardstikReport = new Yardstik.CandidateReportIframe({
-        token: jwt,
-        reportId,
-        container: containerRef.current,
-        domain: domain,
+          token: jwt,
+          accountId: YARDSTIK_ACCOUNT_ID,
+          reportId: YARDSTIK_REPORT_ID,
+          container: containerRef.current,
+          domain: YARDSTIK_APP_URL,
       });
       yardstikReport.on('loaded', () => {
         setIframeReady(true);
       })
-      setYardstikReport(yardstikReport)
-      yardstikReport.on('expiration', () => {
-        console.log("The JWT token has expired.")
-        setTokenExpired(true);
-      })
+        setYardstikReport(yardstikReport)
+
+        yardstikReport.on('expiration', () => {
+            console.log("The JWT token has expired.")
+            setTokenExpired(true);
+        });
+
       return () => {
         yardstikReport.destroy()
       }
     }
-  }, [containerRef, jwt, reportId])
+  }, [containerRef, jwt, YARDSTIK_REPORT_ID])
 
   // on component did mount, get the jwt from the backend
   useEffect(() => {
-    fetch("http://localhost:3001/yardstik-jwt", {
-      method: "POST",
-      body: {
-        "user_email": "erin.black@yardstik.com"
-      }
+    fetch(`${backend_url}/token`, {
+        headers: new Headers({
+            'content-type': 'application/json',
+            'accept': 'application/json'
+        }),
+        method: "POST",
+        body: JSON.stringify({
+            user_email: "troy.morvant@yardstik.com"
+        })
     })
       .then(res => {
         res.json().then(json => {
@@ -63,10 +70,9 @@ function ReportView() {
         }}>
           <CircularProgress />
         </div>}
-      {tokenExpired && <div style={{
-        color: 'navy',
-        padding: '20px',
-      }}>Your session has expired, please refresh the page!</div>}
+      { tokenExpired &&
+        <div style={{ color: 'navy', padding: '20px' }}>Your session has expired, please refresh the page!</div>
+      }
       <div ref={containerRef} style={{
         display: iframeReady ? 'block' : 'none',
         padding: '20px'
