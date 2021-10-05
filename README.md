@@ -29,4 +29,8 @@
 
 # Using the App
 1. View a candidate report by click on the "Candidate Report" tab in the nav bar:
+  ![Yardstik](https://yardstik-assets.s3.amazonaws.com/images/embeddable-sdk-demo-report.png)
+  ![Yardstik](https://yardstik-assets.s3.amazonaws.com/images/embeddable-sdk-demo-report2.png)
+
 2. View/sign account disclosures by clicking on the "Account Disclosures" tab in the nav bar:
+  ![Yardstik](https://yardstik-assets.s3.amazonaws.com/images/embeddable-sdk-demo-disclosures.png)
