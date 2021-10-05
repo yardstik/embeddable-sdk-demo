@@ -11,6 +11,11 @@
 # production
 /build
 
+#yalc
+.yalc
+yalc.ignore
+yalc.lock
+
 # misc
 .DS_Store
 .env
