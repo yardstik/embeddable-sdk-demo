@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+#yalc
+.yalc
+yalc.ignore
+yalc.lock
+
 # testing
 /coverage
 
