@@ -2224,10 +2224,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@yardstik/embedable-sdk@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@yardstik/embedable-sdk/-/embedable-sdk-1.3.0.tgz#92c95f7077e2561e7472c232cbf97ed117fa41e4"
-  integrity sha512-q4Ec00d7eQ6PCcYDkPHtHEskPk8QYHEXkLXGY39it1yOw2fdOUndMwSpydTICdLiZEwf72HS4DRU82vyVDq2pg==
+"@yardstik/embeddable-sdk@^1.3.0":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@yardstik/embeddable-sdk/-/embeddable-sdk-1.3.2.tgz#6800796d1488916caf31808faa8457f4a1bcd807"
+  integrity sha512-vWnwwpBZ3Q484+HdO7rHFc3Eqqu6OJG4keIpSIx+4LpR+kJkT5px+o8kHB8+BdxXI629REvbZTOBk1YDebSdUA==
   dependencies:
     app-root-path "^3.0.0"
     events "^3.3.0"

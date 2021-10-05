@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Yardstik } from '@yardstik/embedable-sdk';
+import { Yardstik } from '@yardstik/embeddable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { BACKEND_URL, YARDSTIK_ACCOUNT_EMAIL, YARDSTIK_ACCOUNT_ID, YARDSTIK_REPORT_ID, YARDSTIK_APP_URL } from './constants';
 
