@@ -2,7 +2,7 @@
 
 # Getting Started
 
-1. Log into your account in Yardstik
+1. Log into your staging/demo account in Yardstik
 2. Navigate to the Developer page and select API Keys
 3. Enter the `Name` for the API key and click the `Create` button
 
@@ -18,11 +18,12 @@
 10. Run `yarn server` to start up the back end.
 11. Run `yarn start` to start up the front end. 
 
-# Important Notes 
-1. The `YARDSTIK_API_KEY` must belong to account specified in `YARDSTIK_ACCOUNT_ID` 
-2. The `YARDSTIK_ACCOUNT_EMAIL` must be associated with the account specified in `YARDSTIK_ACCOUNT_ID`
-3. The account specified in `YARDSTIK_ACCOUNT_ID` must be authorized to view the report for the provided `YARDSTIK_REPORT_ID`.
-4. Legal documents will only appear if they are required on your account but have not yet been provided.
+# Important Notes
+1. The demo contemplates connecting with the Yardstik staging API (see step 9 above). Therefore, the `YARDSTIK_API_KEY`, `YARDSTIK_ACCOUNT_ID` and other variables must relate to your staging/demo account.
+2. The `YARDSTIK_API_KEY` must belong to account specified in `YARDSTIK_ACCOUNT_ID` 
+3. The `YARDSTIK_ACCOUNT_EMAIL` must be associated with the account specified in `YARDSTIK_ACCOUNT_ID`
+4. The account specified in `YARDSTIK_ACCOUNT_ID` must be authorized to view the report for the provided `YARDSTIK_REPORT_ID`.
+5. Legal documents will only appear if they are required on your account but have not yet been provided.
 
 # Using the App
 1. View a candidate report by click on the "Candidate Report" tab in the nav bar:
