@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Yardstik } from '@yardstik/embedable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { YARDSTIK_ACCOUNT_ID, YARDSTIK_APP_URL, BACKEND_URL } from './constants';
+import { YARDSTIK_ACCOUNT_ID, YARDSTIK_APP_URL, YARDSTIK_ACCOUNT_EMAIL, BACKEND_URL } from './constants';
 
 function AccountView() {
   const [jwt, setJwt] = useState('');
@@ -35,19 +35,19 @@ function AccountView() {
         yardstikAccountDisclosures.destroy()
       }
     }
-  }, [containerRef, jwt, YARDSTIK_ACCOUNT_ID])
+  }, [containerRef, jwt])
 
   // on component did mount, get the jwt from the backend
   useEffect(() => {
     fetch(`${backend_url}/token`, {
-        headers: new Headers({
-            'content-type': 'application/json',
-            'accept': 'application/json'
-        }),
-        method: "POST",
-        body: JSON.stringify({
-            user_email: "laura.campbell@yardstik.com"
-        })
+      headers: new Headers({
+        'content-type': 'application/json',
+        'accept': 'application/json'
+      }),
+      method: "POST",
+      body: JSON.stringify({
+        user_email: YARDSTIK_ACCOUNT_EMAIL
+      })
     })
       .then(res => {
         res.json().then(json => {
@@ -58,7 +58,7 @@ function AccountView() {
       .catch((err) => {
         console.log('in catch with err', err)
       });
-  }, []);
+  }, [backend_url]);
 
   return (
     <div className="App">

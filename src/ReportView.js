@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Yardstik } from '@yardstik/embedable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { BACKEND_URL, YARDSTIK_ACCOUNT_ID, YARDSTIK_REPORT_ID, YARDSTIK_APP_URL } from './constants';
+import { BACKEND_URL, YARDSTIK_ACCOUNT_EMAIL, YARDSTIK_ACCOUNT_ID, YARDSTIK_REPORT_ID, YARDSTIK_APP_URL } from './constants';
 
 function ReportView() {
   const [jwt, setJwt] = useState('');
@@ -17,39 +17,39 @@ function ReportView() {
   React.useEffect(() => {
     if (containerRef && jwt && YARDSTIK_REPORT_ID) {
       const yardstikReport = new Yardstik.CandidateReportIframe({
-          token: jwt,
-          accountId: YARDSTIK_ACCOUNT_ID,
-          reportId: YARDSTIK_REPORT_ID,
-          container: containerRef.current,
-          domain: YARDSTIK_APP_URL,
+        token: jwt,
+        accountId: YARDSTIK_ACCOUNT_ID,
+        reportId: YARDSTIK_REPORT_ID,
+        container: containerRef.current,
+        domain: YARDSTIK_APP_URL,
       });
       yardstikReport.on('loaded', () => {
         setIframeReady(true);
       })
-        setYardstikReport(yardstikReport)
+      setYardstikReport(yardstikReport)
 
-        yardstikReport.on('expiration', () => {
-            console.log("The JWT token has expired.")
-            setTokenExpired(true);
-        });
+      yardstikReport.on('expiration', () => {
+        console.log("The JWT token has expired.")
+        setTokenExpired(true);
+      });
 
       return () => {
         yardstikReport.destroy()
       }
     }
-  }, [containerRef, jwt, YARDSTIK_REPORT_ID])
+  }, [containerRef, jwt])
 
   // on component did mount, get the jwt from the backend
   useEffect(() => {
     fetch(`${backend_url}/token`, {
-        headers: new Headers({
-            'content-type': 'application/json',
-            'accept': 'application/json'
-        }),
-        method: "POST",
-        body: JSON.stringify({
-            user_email: "troy.morvant@yardstik.com"
-        })
+      headers: new Headers({
+        'content-type': 'application/json',
+        'accept': 'application/json'
+      }),
+      method: "POST",
+      body: JSON.stringify({
+        user_email: YARDSTIK_ACCOUNT_EMAIL
+      })
     })
       .then(res => {
         res.json().then(json => {
@@ -60,7 +60,7 @@ function ReportView() {
       .catch((err) => {
         console.log('in catch with err', err)
       });
-  }, []);
+  }, [backend_url]);
 
   return (
     <div className="App">
@@ -70,7 +70,7 @@ function ReportView() {
         }}>
           <CircularProgress />
         </div>}
-      { tokenExpired &&
+      {tokenExpired &&
         <div style={{ color: 'navy', padding: '20px' }}>Your session has expired, please refresh the page!</div>
       }
       <div ref={containerRef} style={{
