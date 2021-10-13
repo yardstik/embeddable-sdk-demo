@@ -41,6 +41,11 @@ export default function ProminentAppBar() {
               Account Disclosures
             </Typography>
           </Link>
+          <Link component={RouterLink} to="/simple-iframe">
+            <Typography className={classes.link}>
+              Simple Iframe
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

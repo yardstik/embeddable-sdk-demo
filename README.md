@@ -32,3 +32,9 @@
 
 2. View/sign account disclosures by clicking on the "Account Disclosures" tab in the nav bar:
   ![Yardstik](https://yardstik-assets.s3.amazonaws.com/images/embeddable-sdk-demo-disclosures.png)
+
+# Viewing Any Other URL in an iFrame
+1. In addition to testing the Yardstik Embeddable-SDK library, this demo app can also be used to view any other URL that does not require authentication in an iFrame.
+2. If you have a URL that you would like to view in an iFrame (such as a URL for the candidate intake form), set the the `SIMPLE_IFRAME_URL` variable in the constants.js file to equal such URL.
+3. View the URL in an iframe by clicking on the "Simple IFrame" tab in the nav bar.
+4. If you view the candidate intake form in the "Simple IFrame" tab, the page will listen for a message posted by the form on completion, and console.log "message received" upon receipt of the message.
