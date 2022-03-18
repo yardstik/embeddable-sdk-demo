@@ -1251,7 +1251,7 @@
     jest-util "^26.6.2"
     slash "^3.0.0"
 
-"@jest/core@^26.0.0", "@jest/core@^26.6.0", "@jest/core@^26.6.3":
+"@jest/core@^26.6.0", "@jest/core@^26.6.3":
   version "26.6.3"
   resolved "https://registry.yarnpkg.com/@jest/core/-/core-26.6.3.tgz#7639fcb3833d748a4656ada54bde193051e45fad"
   integrity sha512-xvV1kKbhfUqFVuZ8Cyo+JPpipAHHAV3kcDBftiduK8EICXmTFddryy3P7NfZt8Pv37rA9nEJBKCCkglCPt/Xjw==
@@ -2224,14 +2224,13 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@yardstik/embeddable-sdk@^1.3.0":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@yardstik/embeddable-sdk/-/embeddable-sdk-1.3.2.tgz#6800796d1488916caf31808faa8457f4a1bcd807"
-  integrity sha512-vWnwwpBZ3Q484+HdO7rHFc3Eqqu6OJG4keIpSIx+4LpR+kJkT5px+o8kHB8+BdxXI629REvbZTOBk1YDebSdUA==
+"@yardstik/embeddable-sdk@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@yardstik/embeddable-sdk/-/embeddable-sdk-1.3.5.tgz#dd8fba1b76686f9ac0336bb56d1f49e1a5bc2787"
+  integrity sha512-4qF2RQJZSrpreaNPQoqtFBXIzDYf/KG/dsGqx8pnii7/CsuoF1sEGuK1INZqAJ6hj+TboqmH1fZZBbtOEga9sQ==
   dependencies:
     app-root-path "^3.0.0"
     events "^3.3.0"
-    jest "26.0.0"
     json-stringify-safe "^5.0.1"
     launchdarkly-node-server-sdk "^5.14.3"
     lodash "^4.17.21"
@@ -6462,7 +6461,7 @@ jest-circus@26.6.0:
     stack-utils "^2.0.2"
     throat "^5.0.0"
 
-jest-cli@^26.0.0, jest-cli@^26.6.0:
+jest-cli@^26.6.0:
   version "26.6.3"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-26.6.3.tgz#43117cfef24bc4cd691a174a8796a532e135e92a"
   integrity sha512-GF9noBSa9t08pSyl3CY4frMrqp+aQXFGFkf5hEPbh/pIUFYWMK6ZLTfbmadxJVcJrdRoChlWQsA2VkJcDFK8hg==
@@ -6851,15 +6850,6 @@ jest-worker@^26.5.0, jest-worker@^26.6.2:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
-
-jest@26.0.0:
-  version "26.0.0"
-  resolved "https://registry.yarnpkg.com/jest/-/jest-26.0.0.tgz#848a960a95f0a0f3ef6144d0250198a6e4b7cb32"
-  integrity sha512-OtoG+cpcP+UXx+pQ7rzoQ11Pfb5+OUkrsNn5YPc0GU2HeBktgTANonUZEgT6cCgUHX7jUiuDIusDNTL4iNcWGQ==
-  dependencies:
-    "@jest/core" "^26.0.0"
-    import-local "^3.0.2"
-    jest-cli "^26.0.0"
 
 jest@26.6.0:
   version "26.6.0"
@@ -10516,9 +10506,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
