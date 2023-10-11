@@ -2683,10 +2683,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@yardstik/embeddable-sdk@^1.3.6":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@yardstik/embeddable-sdk/-/embeddable-sdk-1.3.6.tgz#23ba359ba17957d987b523e9e07dbfbbcd657450"
-  integrity sha512-0MKO7hdoAcKYdj7oZ1GFJeGuFABG0hNWUSS4MVFt+NjPjCFDuhIf7HDTKJHxWaXprU4O2EadFVQ9RcTyZK/Hgg==
+"@yardstik/embeddable-sdk@1.3.7":
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@yardstik/embeddable-sdk/-/embeddable-sdk-1.3.7.tgz#3d9b947a85835aaa18cda35fb784d74b06f655e7"
+  integrity sha512-e3bVnPYkq1E5h49RqUKgoj0H/jkOFgULm8K8664/FmQfPzxfvX6uc+rmadKSX1EOACKP8hfIK+ZqqqhcnFjXbA==
   dependencies:
     app-root-path "^3.0.0"
     events "^3.3.0"
@@ -2695,7 +2695,7 @@
     lodash "^4.17.21"
     npm "^9.6.4"
     path "^0.12.7"
-    zod "^1.11.13"
+    zod "^3.22.3"
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
@@ -11308,7 +11308,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zod@^1.11.13, zod@^3.22.3:
+zod@^3.22.3:
   version "3.22.4"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.4.tgz#f31c3a9386f61b1f228af56faa9255e845cf3fff"
   integrity sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==
