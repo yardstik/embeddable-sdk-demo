@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Yardstik } from '@yardstik/embeddable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { YARDSTIK_ACCOUNT_ID, YARDSTIK_APP_URL, YARDSTIK_ACCOUNT_EMAIL, BACKEND_URL } from './constants';
+
 
 function AccountView() {
   const [jwt, setJwt] = useState('');
@@ -12,16 +12,16 @@ function AccountView() {
 
   const containerRef = React.useRef();
 
-  const backend_url = process.env.IS_DOCKER === 'true' ? process.env.BACKEND_URL : BACKEND_URL;
+  const backend_url = process.env.IS_DOCKER === 'true' ? process.env.BACKEND_URL : process.env.REACT_APP_BACKEND_URL;
 
   // Use this code to see a report in the iframe
   React.useEffect(() => {
-    if (containerRef && jwt && YARDSTIK_ACCOUNT_ID) {
+    if (containerRef && jwt && process.env.REACT_APP_YARDSTIK_ACCOUNT_ID) {
       const yardstikAccountDisclosures = new Yardstik.AccountDisclosuresIframe({
         token: jwt,
-        accountId: YARDSTIK_ACCOUNT_ID,
+        accountId: process.env.REACT_APP_YARDSTIK_ACCOUNT_ID,
         container: containerRef.current,
-        domain: YARDSTIK_APP_URL
+        domain: process.env.REACT_APP_YARDSTIK_APP_URL
       });
       yardstikAccountDisclosures.on('loaded', () => {
         setIframeReady(true);
@@ -46,7 +46,7 @@ function AccountView() {
       }),
       method: "POST",
       body: JSON.stringify({
-        user_email: YARDSTIK_ACCOUNT_EMAIL
+        user_email: process.env.REACT_APP_YARDSTIK_ACCOUNT_EMAIL
       })
     })
       .then(res => {

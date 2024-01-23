@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import { SIMPLE_IFRAME_URL } from './constants';
+
 import { get } from 'lodash';
 
 const onMessage = (event) => {
@@ -35,7 +35,7 @@ function SimpleIframe() {
       <div style={{
         padding: '20px'
       }}>
-        <iframe title='test' width='600' height='650' src={SIMPLE_IFRAME_URL} />
+        <iframe title='test' width='600' height='650' src={process.env.REACT_APP_SIMPLE_IFRAME_URL} />
       </div>
     </div>
   );

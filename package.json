@@ -43,7 +43,7 @@
     "follow-redirects": "^1.15.4"
   },
   "scripts": {
-    "start:all": "build && node server.js && react-scripts start",
+    "start:all": "node server.js & react-scripts start",
     "server": "node server.js",
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
