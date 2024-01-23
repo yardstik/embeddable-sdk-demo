@@ -17,7 +17,7 @@
 9. Set the `YARDSTIK_API_URL` environment variable to `https://api.yardstik-staging.com`.
 10. Run `yarn server` to start up the back end.
 11. Run `yarn start` to start up the front end.
-12. Or only `start:all` to start up both
+12. Or `yarn start:all` to start up both server and client
 
 # Important Notes
 
