@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Yardstik } from '@yardstik/embeddable-sdk';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { BACKEND_URL, YARDSTIK_ACCOUNT_EMAIL, YARDSTIK_ACCOUNT_ID, YARDSTIK_REPORT_ID, YARDSTIK_APP_URL } from './constants';
 
 function ReportView() {
   const [jwt, setJwt] = useState('');
@@ -12,16 +11,16 @@ function ReportView() {
 
   const containerRef = React.useRef();
 
-  const backend_url = process.env.IS_DOCKER === 'true' ? process.env.BACKEND_URL : BACKEND_URL;
+  const backend_url = process.env.IS_DOCKER === 'true' ? process.env.BACKEND_URL : process.env.REACT_APP_BACKEND_URL;
 
   React.useEffect(() => {
-    if (containerRef && jwt && YARDSTIK_REPORT_ID) {
+    if (containerRef && jwt && process.env.REACT_APP_YARDSTIK_REPORT_ID) {
       const yardstikReport = new Yardstik.CandidateReportIframe({
         token: jwt,
-        accountId: YARDSTIK_ACCOUNT_ID,
-        reportId: YARDSTIK_REPORT_ID,
+        accountId: process.env.REACT_APP_YARDSTIK_ACCOUNT_ID,
+        reportId: process.env.REACT_APP_YARDSTIK_REPORT_ID,
         container: containerRef.current,
-        domain: YARDSTIK_APP_URL,
+        domain: process.env.REACT_APP_YARDSTIK_APP_URL,
       });
       yardstikReport.on('loaded', () => {
         setIframeReady(true);
@@ -48,7 +47,7 @@ function ReportView() {
       }),
       method: "POST",
       body: JSON.stringify({
-        user_email: YARDSTIK_ACCOUNT_EMAIL
+        user_email: process.env.REACT_APP_YARDSTIK_ACCOUNT_EMAIL
       })
     })
       .then(res => {
