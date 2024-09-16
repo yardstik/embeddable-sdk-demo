@@ -4,6 +4,9 @@ on:
     branches:
       - gh-418
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-22.04
