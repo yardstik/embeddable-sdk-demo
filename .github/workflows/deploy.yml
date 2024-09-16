@@ -4,10 +4,6 @@ on:
     branches:
       - gh-418
 
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_SECRET }}
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-22.04
@@ -15,19 +11,20 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_SECRET }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
+          ref: ${{ github.head_ref }}
           node-version: 20
 
       - name: Install Dependencies
         run: yarn
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_SECRET }}
 
       - name: Build Vite Project
         run: yarn build
