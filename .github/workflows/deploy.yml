@@ -5,7 +5,7 @@ on:
       - gh-418
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   build-and-deploy:
@@ -22,6 +22,8 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Build Vite Project
         run: yarn build
@@ -29,5 +31,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_TOKEN }}
           publish_dir: ./build
