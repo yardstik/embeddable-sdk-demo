@@ -1749,10 +1749,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@yardstik/core.components@1.172.5":
-  version "1.172.5"
-  resolved "https://npm.pkg.github.com/download/@yardstik/core.components/1.172.5/4bd839c4915c4a741d49212eae23fcda1e8e65dd#4bd839c4915c4a741d49212eae23fcda1e8e65dd"
-  integrity sha512-ZXsa9LHzSOlFOSzYXlTx6+P6PL2DWk0AbqGG/TNAhe3QsMUmUJ/CgnqhZmM+KgGN2fp3wFHPnhS1Uq/vvcqteg==
+"@yardstik/core.components@1.173.0":
+  version "1.173.0"
+  resolved "https://npm.pkg.github.com/download/@yardstik/core.components/1.173.0/f66828b1a687f130d5c5626802c9e6233d70196e#f66828b1a687f130d5c5626802c9e6233d70196e"
+  integrity sha512-WPKzH+jRglZDgMGteqBL3ns57blWwu4mYqdwzdaQ4z7sPvz1Ou4X7pR9hnWh83rpOmXD99PuIA4HPT4Q1wT8ng==
   dependencies:
     "@date-io/date-fns" "1.3.13"
     "@date-io/moment" "1.x"

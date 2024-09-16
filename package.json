@@ -10,7 +10,7 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^13.5.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "@yardstik/core.components": "1.172.5",
+    "@yardstik/core.components": "1.173.0",
     "@yardstik/embeddable-sdk": "1.3.9",
     "axios": "^1.7.4",
     "cors": "^2.8.5",

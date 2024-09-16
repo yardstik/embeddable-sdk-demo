@@ -16,28 +16,15 @@ const PORT = process.env.PORT || 3001;
  * The route must accept a JSON body which includes the email address of the user viewing the embedded content
  * The email address must belong to a user registered in Yardstik and associated with the account that API_KEY belongs to
  *
- * sample body: { "user_email": "user@example.com" }
+ * sample body: { "user_email": "user@example.com", "api_key": "API_KEY" }
  */
 app.post("/token", express.json({ type: "*/*" }), (req, res, next) => {
   // Set Header to include yardstik apiKey
   // Get the api_key in the developer tab of the Yardstik app
-  const options = {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Account ${process.env.YARDSTIK_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-  };
 
-  if (!process.env.YARDSTIK_API_URL) {
+  if (!req.body.api_key) {
     throw new Error(
-      "the YARDSTIK_API_URL environment variable cannot be null "
-    );
-  }
-
-  if (!process.env.YARDSTIK_API_KEY) {
-    throw new Error(
-      "the YARDSTIK_API_KEY environment variable cannot be null "
+      "Request body should include the api_key key with a valid value"
     );
   }
 
@@ -46,6 +33,14 @@ app.post("/token", express.json({ type: "*/*" }), (req, res, next) => {
       "Request body should include the user_email key with a valid email"
     );
   }
+
+  const options = {
+    headers: {
+      Accept: "application/json",
+      Authorization: `Account ${req.body.api_key}`,
+      "Content-Type": "application/json",
+    },
+  };
 
   console.log(req.body);
   // Make a request to the Yardstik backend to get the JWT for the user

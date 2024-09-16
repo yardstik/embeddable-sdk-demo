@@ -40,6 +40,18 @@ export default function ProminentAppBar() {
               Candidate Intake
             </Typography>
           </Link>
+
+          <Link component={RouterLink} to="/account-view">
+            <Typography
+              sx={{
+                color: "white",
+                padding: "30px",
+                alignSelf: "flex-end",
+              }}
+            >
+              Account Disclosures
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
