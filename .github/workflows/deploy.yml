@@ -24,6 +24,7 @@ jobs:
         run: yarn
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build Vite Project
         run: yarn build
