@@ -25,6 +25,9 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_SECRET }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Build Vite Project
         run: yarn build
