@@ -18,8 +18,8 @@ function App() {
         <Route path={"/report"} exact={true} component={ReportView} />
         <Route path={"/account-view"} exact={true} component={AccountView} />
         <Route
-          path={"/candidate-intake-form"}
           exact={true}
+          path={"/candidate-intake-form"}
           component={CandidateIntakeView}
         />
       </Switch>
