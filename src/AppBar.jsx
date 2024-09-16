@@ -12,7 +12,7 @@ export default function ProminentAppBar() {
   const theme = useTheme();
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, mb: 2 }}>
       <AppBar position="static" sx={{ bgcolor: theme.palette.secondary.main }}>
         <Toolbar>
           <Logo />
@@ -28,7 +28,8 @@ export default function ProminentAppBar() {
               Candidate Report
             </Typography>
           </Link>
-          <Link component={RouterLink} to="/account-view">
+
+          <Link component={RouterLink} to="/candidate-intake-form">
             <Typography
               sx={{
                 color: "white",
@@ -36,18 +37,7 @@ export default function ProminentAppBar() {
                 alignSelf: "flex-end",
               }}
             >
-              Account Disclosures
-            </Typography>
-          </Link>
-          <Link component={RouterLink} to="/simple-iframe">
-            <Typography
-              sx={{
-                color: "white",
-                padding: "30px",
-                alignSelf: "flex-end",
-              }}
-            >
-              Simple Iframe
+              Candidate Intake
             </Typography>
           </Link>
         </Toolbar>

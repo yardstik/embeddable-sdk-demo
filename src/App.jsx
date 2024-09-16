@@ -6,17 +6,22 @@ import { Box } from "@mui/material";
 import AccountView from "./AccountView";
 import TestAppBar from "./AppBar";
 import ReportView from "./ReportView";
-import SimpleIframe from "./SimpleIframe";
+import { CandidateIntakeView } from "./views/CandidateIntakeView";
 
 function App() {
   return (
     <Box sx={{ height: "100%", textAlign: "center", bgcolor: "grey.200" }}>
       <TestAppBar />
+
       <Switch>
         <Route path={"/"} exact={true} component={ReportView} />
         <Route path={"/report"} exact={true} component={ReportView} />
         <Route path={"/account-view"} exact={true} component={AccountView} />
-        <Route path={"/simple-iframe"} exact={true} component={SimpleIframe} />
+        <Route
+          path={"/candidate-intake-form"}
+          exact={true}
+          component={CandidateIntakeView}
+        />
       </Switch>
     </Box>
   );
