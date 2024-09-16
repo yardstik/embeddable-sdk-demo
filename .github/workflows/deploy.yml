@@ -11,7 +11,9 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-22.04
-
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
