@@ -6,13 +6,13 @@ on:
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_SECRET }}
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-22.04
     env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_SECRET }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Checkout Repository
@@ -27,7 +27,7 @@ jobs:
         run: yarn
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_SECRET }}
 
       - name: Build Vite Project
         run: yarn build
