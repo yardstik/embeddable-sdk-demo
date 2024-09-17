@@ -1,9 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Link from "@mui/material/Link";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Logo, useTheme } from "@yardstik/core.components";
 
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -15,8 +14,6 @@ export default function ProminentAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ bgcolor: theme.palette.secondary.main }}>
         <Toolbar>
-          <Logo />
-
           <Link component={RouterLink} to="/">
             <Typography
               sx={{
