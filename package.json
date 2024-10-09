@@ -21,7 +21,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^5.3.4",
-    "vite": "^5.3.5",
+    "vite": "^5.4.8",
     "vite-plugin-node-polyfills": "^0.22.0",
     "web-vitals": "^1.0.1"
   },
@@ -50,7 +50,8 @@
     "ws": "^7.5.10",
     "braces": "^3.0.3",
     "npm": "^10.8.2",
-    "path-to-regexp": "^1.9.0"
+    "path-to-regexp": "^1.9.0",
+    "rollup": "^4.22.4"
   },
   "scripts": {
     "start:all": "node server.js & vite",
