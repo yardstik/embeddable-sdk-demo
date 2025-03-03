@@ -58,8 +58,6 @@
     "esbuild": "0.25.0",
     "cross-spawn": "^7.0.5",
     "serialize-javascript": "^6.0.2"
-
-    
   },
   "scripts": {
     "start:all": "node server.js & vite",
