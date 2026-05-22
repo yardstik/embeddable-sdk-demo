@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@vitejs/plugin-react": "^4.4.1",
     "@yardstik/embeddable-sdk": "v1.4.1",
-    "axios": "^1.15.0",
+    "axios": "^1.15.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.20.0",
