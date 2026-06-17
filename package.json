@@ -47,7 +47,7 @@
     "follow-redirects": "^1.16.0",
     "webpack-dev-middleware": "^5.3.4",
     "tar": "^7.5.11",
-    "ws": "^7.5.10",
+    "ws": "^7.5.11",
     "braces": "^3.0.3",
     "npm": "^10.8.2",
     "path-to-regexp": "^1.9.0",
