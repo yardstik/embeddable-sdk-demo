@@ -86,7 +86,12 @@ function AccountView() {
       <div
         ref={containerRef}
         style={{
-          display: iframeReady ? "block" : "none",
+          // Do NOT use display:none to hide the iframe before it's ready: a
+          // display:none subtree suspends rendering of the embedded app, so it
+          // never finishes rendering and never fires `loaded` — the very signal
+          // that flips iframeReady. That deadlocks the load. visibility keeps
+          // it rendered while hidden, so it can load then reveal it.
+          visibility: iframeReady ? "visible" : "hidden",
           padding: "20px",
         }}
       />

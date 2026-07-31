@@ -36,6 +36,30 @@
 2. View/sign account disclosures by clicking on the "Account Disclosures" tab in the nav bar:
    ![Yardstik](https://yardstik-assets.s3.amazonaws.com/images/embeddable-sdk-demo-disclosures.png)
 
+# Note: don't hide the iframe with `display: none`
+
+The SDK emits a `loaded` event once the embedded view has finished rendering. Hosts
+typically use it to hide a loading spinner and reveal the iframe:
+
+```jsx
+yardstikReport.on("loaded", () => setIframeReady(true));
+// ...
+<div
+  ref={containerRef}
+  style={{ visibility: iframeReady ? "visible" : "hidden" }}
+/>
+```
+
+**Do not gate the iframe with `display: none` while waiting for `loaded`.** A
+`display: none` subtree suspends rendering of the embedded app, so it never finishes
+rendering and therefore never posts the `loaded` message — the very signal you are
+waiting on. The result is a deadlock: the iframe stays on the spinner forever and the
+content never appears.
+
+Hide it with `visibility: hidden` (or `opacity: 0`) instead, which keeps the iframe
+rendered while hidden so it can finish loading and fire `loaded`. See
+`src/ReportView.jsx` and `src/AccountView.jsx` for the pattern used in this demo.
+
 # Viewing Any Other URL in an iFrame
 
 1. In addition to testing the Yardstik Embeddable-SDK library, this demo app can also be used to view any other URL that does not require authentication in an iFrame.
