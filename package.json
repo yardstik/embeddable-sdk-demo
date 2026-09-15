@@ -77,7 +77,8 @@
     "sigstore": "^4.1.1",
     "@sigstore/core": "^3.2.1",
     "@babel/core": "^7.29.6",
-    "body-parser": "^1.20.6"
+    "body-parser": "^1.20.6",
+    "pacote": "^21.5.1"
   },
   "scripts": {
     "start:all": "node server.js & vite",
