@@ -1,0 +1,10 @@
+# .github/team.yml
+# Team configuration read by Claude Code skills (e.g. /resolve-vulnerabilities).
+jira:
+  project: UX                                     # Jira project key
+  atlassian_url: https://yardstik.atlassian.net   # Atlassian instance URL
+branch:
+  prefix: ux                                      # branch name prefix, e.g. ux-1048
+owners:
+  - cleber.carvalho@yardstik.com
+  - joshua.giowaya@yardstik.com
