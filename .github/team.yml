@@ -1,5 +1,6 @@
 # .github/team.yml
 # Team configuration read by Claude Code skills (e.g. /resolve-vulnerabilities).
+team: ux                                          # team slug; matches the key under `teams:` in the datadog-review-errors config
 jira:
   project: UX                                     # Jira project key
   atlassian_url: https://yardstik.atlassian.net   # Atlassian instance URL
