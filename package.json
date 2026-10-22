@@ -83,7 +83,8 @@
     "pacote": "^21.5.1",
     "undici": "^6.28.1",
     "source-map-js": "^1.2.2",
-    "postcss-selector-parser": "^7.1.6"
+    "postcss-selector-parser": "^7.1.6",
+    "http-cache-semantics": "^4.3.0"
   },
   "scripts": {
     "start:all": "node server.js & vite",
