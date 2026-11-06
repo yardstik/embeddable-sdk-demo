@@ -35,7 +35,7 @@
     "minimatch": "^3.1.4",
     "ejs": "^3.1.10",
     "async": "^3.2.2",
-    "decode-uri-component": "^0.5.0",
+    "decode-uri-component": "^0.5.1",
     "qs": "^6.16.0",
     "browserslist": "^4.28.7",
     "baseline-browser-mapping": "^2.11.0",
